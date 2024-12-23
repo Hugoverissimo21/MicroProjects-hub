@@ -1,0 +1,110 @@
+---
+title: "Analyze International Debt Statistics"
+output: html_document
+date: "`r Sys.Date()`"
+---
+
+It's not that we humans only take debts to manage our necessities. A country may also take debt to manage its economy. For example, infrastructure spending is one costly ingredient required for a country's citizens to lead comfortable lives. [The World Bank](https://www.worldbank.org) is the organization that provides debt to countries.
+
+In this notebook, we are going to analyze international debt data collected by The World Bank. The dataset contains information about the amount of debt (in USD) owed by developing countries across several categories. We are going to find the answers to questions like: 
+
+- What is the total amount of debt that is owed by the countries listed in the dataset?
+- Which country owns the maximum amount of debt and what does that amount look like?
+- What is the average amount of debt owed by countries across different debt indicators?
+
+Below is a snapshot of the database you will be working with:
+
+| country_name | country_code | indicator_name                                                     | indicator_code | debt        |
+|:------------:|:------------:|:------------------------------------------------------------------:|:--------------:|:-----------:|
+| Afghanistan  | AFG          | "Disbursements on external debt, long-term (DIS, current US\$)"     | DT.DIS.DLXF.CD | 72894453.7  |
+| Afghanistan  | AFG          | "Interest payments on external debt, long-term (INT, current US\$)" | DT.INT.DLXF.CD | 53239440.1  |
+| Afghanistan  | AFG          | "PPG, bilateral (AMT, current US\$)"                                | DT.AMT.BLAT.CD | 61739336.9  |
+| Afghanistan  | AFG          | "PPG, bilateral (DIS, current US\$)"                                | DT.DIS.BLAT.CD | 49114729.4  |
+| Afghanistan  | AFG          | "PPG, bilateral (INT, current US\$)"                                | DT.INT.BLAT.CD | 39903620.1  |
+| Afghanistan  | AFG          | "PPG, multilateral (AMT, current US\$)"                             | DT.AMT.MLAT.CD | 39107845    |
+| Afghanistan  | AFG          | "PPG, multilateral (DIS, current US\$)"                             | DT.DIS.MLAT.CD | 23779724.3  |
+| Afghanistan  | AFG          | "PPG, multilateral (INT, current US\$)"                             | DT.INT.MLAT.CD | 13335820    |
+| Afghanistan  | AFG          | "PPG, official creditors (AMT, current US\$)"                       | DT.AMT.OFFT.CD | 100847181.9 |
+| Afghanistan  | AFG          | "PPG, official creditors (DIS, current US\$)"                       | DT.DIS.OFFT.CD | 72894453.7  |
+
+You will execute SQL queries to answer six questions, as listed in the instructions.
+
+## Solution:
+
+```{python, include=FALSE}
+import pandas as pd
+```
+
+```{.sql}
+--num_distinct_countries
+SELECT COUNT(DISTINCT country_name) AS total_distinct_countries
+FROM international_debt;
+```
+```{python, echo=FALSE}
+pd.set_option('display.float_format', lambda x: '%.3f' % x)
+pd.set_option("max_colwidth", None)
+pd.read_csv("num_distinct_countries.csv")
+```
+
+```{.sql}
+--distinct_debt_indicators
+SELECT DISTINCT indicator_code AS distinct_debt_indicators
+FROM international_debt
+ORDER BY distinct_debt_indicators;
+```
+```{python, echo=FALSE}
+pd.set_option('display.float_format', lambda x: '%.3f' % x)
+pd.set_option("max_colwidth", None)
+pd.read_csv("distinct_debt_indicators.csv")
+```
+
+```{.sql}
+--total_debt
+SELECT SUM(debt)/POWER(10,6) AS total_debt
+FROM international_debt;
+```
+```{python, echo=FALSE}
+pd.set_option('display.float_format', lambda x: '%.3f' % x)
+pd.set_option("max_colwidth", None)
+pd.read_csv("total_debt.csv")
+```
+
+```{.sql}
+--highest_debt_country
+SELECT country_name AS highest_debt_country, SUM(debt)
+FROM international_debt
+GROUP BY country_name
+ORDER BY SUM(debt) DESC
+LIMIT 1;
+```
+```{python, echo=FALSE}
+pd.set_option('display.float_format', lambda x: '%.3f' % x)
+pd.set_option("max_colwidth", None)
+pd.read_csv("highest_debt_country.csv")
+```
+
+```{.sql}
+--avg_debt_per_indicator
+SELECT indicator_code AS indicator, AVG(debt) AS avg_debt
+FROM international_debt
+GROUP BY indicator_code;
+```
+```{python, echo=FALSE}
+pd.set_option('display.float_format', lambda x: '%.3f' % x)
+pd.set_option("max_colwidth", None)
+pd.read_csv("avg_debt_per_indicator.csv")
+```
+
+```{.sql}
+--highest_principal_repayment
+SELECT country_name, indicator_name
+FROM international_debt
+WHERE debt = (SELECT MAX(debt)
+              FROM international_debt
+              WHERE indicator_code = 'DT.AMT.DLXF.CD');
+```
+```{python, echo=FALSE}
+pd.set_option('display.float_format', lambda x: '%.3f' % x)
+pd.set_option("max_colwidth", None)
+pd.read_csv("highest_principal_repayment.csv")
+```
