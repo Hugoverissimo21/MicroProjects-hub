@@ -1,30 +1,32 @@
 # MicroProjects-hub
 
-REMOVER ACENTOS E CARACTERES ESPECIAIS - TUDO NUMA SO LINGUA, TALVEZ METER PARA CADA QUAL A ASSOCIACAO E LINGUAGEM
+**A collection of small-scale projects, experiments, and reports showcasing diverse skills and concepts.**
 
-EX.: DATACAMP PROJECTS - PYTHON, R, SQL - ENGLISH; UNIVERSITY PROJECTS - PYTHON, R - PORTUGUESE
+## DataCamp Projects
 
-Collection of small-scale projects, experiments, and reports showcasing a variety of skills and concepts.
+- Language: English
 
-1) [Cleaning Bank Marketing Campaign Data](https://hugoverissimo21.github.io/MicroProjects-hub/Cleaning%20Bank%20Marketing%20Campaign%20Data/notebook.html) - DataCamp Project
+- Tools: Python, R, SQL
+
+1) [Cleaning Bank Marketing Campaign Data](https://hugoverissimo21.github.io/MicroProjects-hub/Cleaning%20Bank%20Marketing%20Campaign%20Data/notebook.html)
   
     -   Used Python (pandas) for data manipulation and transformation.
     -   Employed various methods such as str.replace, map, and apply for column value transformations.
     -   Exported transformed DataFrames to CSV files for further use.
 
-2) [Building Financial Reports](https://hugoverissimo21.github.io/MicroProjects-hub/Building%20Financial%20Reports/notebook.html) - DataCamp Project
+2) [Building Financial Reports](https://hugoverissimo21.github.io/MicroProjects-hub/Building%20Financial%20Reports/notebook.html)
   
     -   Utilized Python with pandas and seaborn to analyze financial data from XLSX files.
     -   Calculated key financial ratios (leverage ratio and profitability ratio).
     -   Explored the relationship between leverage and profitability for a specific company type ("real_est") through a scatter plot, finding a positive correlation.
 
-3) [Modeling Car Insurance Claim Outcomes](https://hugoverissimo21.github.io/MicroProjects-hub/Modeling%20Car%20Insurance%20Claim%20Outcomes/notebook.html) - DataCamp Project
+3) [Modeling Car Insurance Claim Outcomes](https://hugoverissimo21.github.io/MicroProjects-hub/Modeling%20Car%20Insurance%20Claim%20Outcomes/notebook.html)
   
     -   Utilized R with readr and dplyr to manipulate data from a CSV file.
     -   Created logistic regression models for each column in the dataset, calculating the accuracy of each model in predicting the 'outcome' variable.
     -   Identified the most accurate model by employing DataFrame transformations.
 
-4) [Analyze International Debt Statistics](https://hugoverissimo21.github.io/MicroProjects-hub/Analyze%20International%20Debt%20Statistics/notebook.html) - DataCamp Project
+4) [Analyze International Debt Statistics](https://hugoverissimo21.github.io/MicroProjects-hub/Analyze%20International%20Debt%20Statistics/notebook.html)
 
     -   Used SQL to obtain the total count of unique countries in the "international_debt" dataset, providing an overview of the dataset's geographical diversity.
     -   Extracted a list of unique debt indicators from the dataset, offering a concise summary of the different financial metrics considered.
@@ -34,9 +36,11 @@ Collection of small-scale projects, experiments, and reports showcasing a variet
 
     -   ...
 
-## university-projects
+## University Projects
 
-Note: Inside each folder, there is a README file that contains a redirect/hyperlink to the main content (report/slides).
+- Language: Portuguese
+
+- Tools: Python, R
 
 1) [QR Decomposition and LM Algorithm](https://hugoverissimo21.github.io/MicroProjects-hub/QR%20Decomposition%20and%20LM%20Algorithm/ani_trabalho.pdf) ([Slides](https://hugoverissimo21.github.io/MicroProjects-hub/QR%20Decomposition%20and%20LM%20Algorithm/ani_quarto.html#/title-slide)) [Python, for Numerical Analysis I]
 
