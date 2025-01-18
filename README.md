@@ -38,6 +38,8 @@
 
 ## University Projects
 
+- Degree: BSc in Applied Mathematics to Economics and Management
+
 - Language: Portuguese
 
 - Tools: Python, R
